@@ -6,7 +6,6 @@ import { SellersService } from './sellers/sellers.service';
 import { SellersModule } from './sellers/sellers.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import * as process from 'node:process';
 import { SellersEntity } from './Entity/sellers.entity';
 
 @Module({
