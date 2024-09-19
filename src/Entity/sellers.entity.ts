@@ -6,7 +6,7 @@ export class SellersEntity extends DefaultEntity {
   @Column()
   name: string;
   @Column()
-  ID: string;
+  userID: string;
   @Column()
-  PW: string;
+  userPW: string;
 }
