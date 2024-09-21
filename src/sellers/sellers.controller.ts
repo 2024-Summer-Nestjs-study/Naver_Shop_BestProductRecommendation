@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SellersService } from './sellers.service';
 import { SellersRegistDto } from './dto/sellers.regist.dto';
+import { SellersLoginDto } from './dto/sellers.login.dto';
 
 @Controller('sellers')
 export class SellersController {
@@ -9,5 +10,9 @@ export class SellersController {
   @Post('regist')
   async regist(@Body() body: SellersRegistDto) {
     return this.sellersService.regist(body);
+  }
+  @Post('login')
+  async login(@Body() body: SellersLoginDto) {
+    return this.sellersService.login(body);
   }
 }
