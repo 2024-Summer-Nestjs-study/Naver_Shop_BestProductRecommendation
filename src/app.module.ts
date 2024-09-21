@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { SellersController } from './sellers/sellers.controller';
-import { SellersService } from './sellers/sellers.service';
 import { SellersModule } from './sellers/sellers.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SellersEntity } from './Entity/sellers.entity';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -28,9 +27,10 @@ import { SellersEntity } from './Entity/sellers.entity';
       }),
     }),
     SellersModule,
+    JwtModule,
   ],
-  controllers: [AppController, SellersController],
-  providers: [AppService, SellersService],
-  exports: [TypeOrmModule],
+  controllers: [AppController],
+  providers: [AppService],
+  exports: [TypeOrmModule, JwtModule],
 })
 export class AppModule {}

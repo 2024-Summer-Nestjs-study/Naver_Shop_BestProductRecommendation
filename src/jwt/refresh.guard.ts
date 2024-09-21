@@ -21,10 +21,10 @@ export class AccessGuard implements CanActivate {
       throw new UnauthorizedException('헤드가 비었습니다.');
     }
     const jwt = token.replace('Bearer ', '');
-    const secretA = this.configService.get('access_Key');
+    const secretR = this.configService.get('refresh_Key');
     try {
       const payload = await this.jwtService.verifyAsync(jwt, {
-        secret: secretA,
+        secret: secretR,
       });
       req['user'] = payload;
     } catch (e) {
