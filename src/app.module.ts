@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SellersEntity } from './Entity/sellers.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { CustomerModule } from './customer/customer.module';
+import { CustomerEntity } from './Entity/customer.entity';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { CustomerModule } from './customer/customer.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [SellersEntity],
+        entities: [SellersEntity, CustomerEntity],
         synchronize: true,
       }),
     }),

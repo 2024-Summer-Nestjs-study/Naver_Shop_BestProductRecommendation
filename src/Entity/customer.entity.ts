@@ -1,17 +1,16 @@
-import { Entity } from 'typeorm';
-import { IsEmail, IsString } from 'class-validator';
+import { Column, Entity } from 'typeorm';
 import { DefaultEntity } from './default.entity';
 
 @Entity()
 export class CustomerEntity extends DefaultEntity {
-  @IsString()
+  @Column()
   name: string;
-  @IsString()
+  @Column()
   userID: string;
-  @IsString()
+  @Column()
   userPW: string;
-  @IsString()
+  @Column()
   address: string;
-  @IsEmail()
+  @Column()
   email: string;
 }
