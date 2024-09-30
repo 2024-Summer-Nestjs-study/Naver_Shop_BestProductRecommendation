@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SellersService } from './sellers.service';
-import { SellersRegistDto } from './dto/sellers.regist.dto';
-import { SellersLoginDto } from './dto/sellers.login.dto';
+import { SellersRegistDto } from './dto/req/sellers.regist.dto';
+import { SellersLoginDto } from './dto/req/sellers.login.dto';
 
 @Controller('sellers')
 export class SellersController {
