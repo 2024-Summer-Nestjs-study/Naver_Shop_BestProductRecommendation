@@ -10,6 +10,7 @@ import { CustomerModule } from './customer/customer.module';
 import { CustomerEntity } from './Entity/customer.entity';
 import { ProductsService } from './products/products.service';
 import { ProductsModule } from './products/products.module';
+import { ProductEntity } from './Entity/product.entity';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { ProductsModule } from './products/products.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [SellersEntity, CustomerEntity],
+        entities: [SellersEntity, CustomerEntity, ProductEntity],
         synchronize: true,
       }),
     }),
