@@ -8,6 +8,8 @@ import { SellersEntity } from './Entity/sellers.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { CustomerModule } from './customer/customer.module';
 import { CustomerEntity } from './Entity/customer.entity';
+import { ProductsService } from './products/products.service';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -31,9 +33,10 @@ import { CustomerEntity } from './Entity/customer.entity';
     SellersModule,
     JwtModule,
     CustomerModule,
+    ProductsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ProductsService],
   exports: [TypeOrmModule, JwtModule],
 })
 export class AppModule {}
