@@ -2,7 +2,7 @@ import { Column, Entity } from 'typeorm';
 import { DefaultEntity } from './default.entity';
 
 @Entity()
-export class CustomerEntity extends DefaultEntity {
+export class UserEntity extends DefaultEntity {
   @Column()
   name: string;
   @Column()
@@ -10,7 +10,5 @@ export class CustomerEntity extends DefaultEntity {
   @Column()
   userPW: string;
   @Column()
-  address: string;
-  @Column()
-  email: string;
+  rela: string; // 판매자 , 소비자 구분.
 }
