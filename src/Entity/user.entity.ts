@@ -10,5 +10,7 @@ export class UserEntity extends DefaultEntity {
   @Column()
   userPW: string;
   @Column()
+  email: string;
+  @Column()
   rela: string; // 판매자 , 소비자 구분.
 }

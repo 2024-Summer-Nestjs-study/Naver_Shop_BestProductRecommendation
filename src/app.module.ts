@@ -7,10 +7,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SellersEntity } from './Entity/sellers.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { CustomerModule } from './customer/customer.module';
-import { CustomerEntity } from './Entity/customer.entity';
+import { UserEntity } from './Entity/user.entity';
 import { ProductsService } from './products/products.service';
 import { ProductsModule } from './products/products.module';
 import { ProductEntity } from './Entity/product.entity';
+import { UserController } from './user/user.controller';
+import { UserService } from './user/user.service';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -27,7 +30,7 @@ import { ProductEntity } from './Entity/product.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [SellersEntity, CustomerEntity, ProductEntity],
+        entities: [SellersEntity, UserEntity, ProductEntity],
         synchronize: true,
       }),
     }),
@@ -35,9 +38,10 @@ import { ProductEntity } from './Entity/product.entity';
     JwtModule,
     CustomerModule,
     ProductsModule,
+    UserModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, ProductsService],
+  controllers: [AppController, UserController],
+  providers: [AppService, ProductsService, UserService],
   exports: [TypeOrmModule, JwtModule],
 })
 export class AppModule {}
