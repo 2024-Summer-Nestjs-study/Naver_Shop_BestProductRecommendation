@@ -6,10 +6,11 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { CustomerEntity } from '../Entity/customer.entity';
 import { CustomerService } from '../customer/customer.service';
+import { SellerEntity } from '../Entity/seller.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserEntity, CustomerEntity]),
+    TypeOrmModule.forFeature([UserEntity, CustomerEntity, SellerEntity]),
     JwtModule.register({}),
   ],
   controllers: [UserController],

@@ -10,6 +10,7 @@ import { ProductsModule } from './products/products.module';
 import { UserModule } from './user/user.module';
 import { CustomerEntity } from './Entity/customer.entity';
 import { SellerEntity } from './Entity/seller.entity';
+import { SellerModule } from './seller/seller.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { SellerEntity } from './Entity/seller.entity';
     CustomerModule,
     ProductsModule,
     UserModule,
+    SellerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

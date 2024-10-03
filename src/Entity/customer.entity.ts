@@ -5,8 +5,8 @@ import { UserEntity } from './user.entity';
 @Entity()
 export class CustomerEntity extends DefaultEntity {
   @OneToOne(() => UserEntity)
-  @JoinColumn({ name: 'userEntity' })
-  userEntity: number;
+  @JoinColumn({ name: 'userid' })
+  userid: number;
 
   @Column()
   name: string;

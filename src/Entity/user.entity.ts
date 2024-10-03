@@ -1,12 +1,13 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, Unique } from 'typeorm';
 import { DefaultEntity } from './default.entity';
 
 @Entity()
+@Unique(['userID', 'email'])
 export class UserEntity extends DefaultEntity {
   @Column()
-  name: string;
-  @Column()
   userID: string;
+  @Column()
+  name: string;
   @Column()
   userPW: string;
   @Column()
