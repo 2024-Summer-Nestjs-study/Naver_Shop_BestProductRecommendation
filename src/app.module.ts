@@ -12,6 +12,7 @@ import { ProductEntity } from './Entity/product.entity';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
+import { CustomerEntity } from './Entity/customer.entity';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { UserModule } from './user/user.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [UserEntity, ProductEntity],
+        entities: [UserEntity, CustomerEntity],
         synchronize: true,
       }),
     }),
@@ -37,8 +38,8 @@ import { UserModule } from './user/user.module';
     ProductsModule,
     UserModule,
   ],
-  controllers: [AppController, UserController],
-  providers: [AppService, ProductsService, UserService],
+  controllers: [AppController],
+  providers: [AppService],
   exports: [TypeOrmModule, JwtModule],
 })
 export class AppModule {}
