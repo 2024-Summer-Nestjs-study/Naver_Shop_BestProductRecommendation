@@ -6,13 +6,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { CustomerModule } from './customer/customer.module';
 import { UserEntity } from './Entity/user.entity';
-import { ProductsService } from './products/products.service';
 import { ProductsModule } from './products/products.module';
-import { ProductEntity } from './Entity/product.entity';
-import { UserController } from './user/user.controller';
-import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
 import { CustomerEntity } from './Entity/customer.entity';
+import { SellerEntity } from './Entity/seller.entity';
 
 @Module({
   imports: [
@@ -29,7 +26,7 @@ import { CustomerEntity } from './Entity/customer.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [UserEntity, CustomerEntity],
+        entities: [UserEntity, CustomerEntity, SellerEntity],
         synchronize: true,
       }),
     }),
