@@ -1,11 +1,12 @@
-import { Column, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { DefaultEntity } from './default.entity';
-import { SellersEntity } from './sellers.entity';
+import { SellerEntity } from './seller.entity';
 
+@Entity()
 export class ProductEntity extends DefaultEntity {
-  @ManyToOne((type) => SellersEntity, (user: SellersEntity) => user.id)
-  @JoinColumn()
-  user: SellersEntity;
+  @ManyToOne(() => SellerEntity, (seller: SellerEntity) => seller.id)
+  @JoinColumn({ name: 'sellerId' })
+  seller: SellerEntity;
   @Column()
   name: string;
   @Column()
@@ -13,7 +14,5 @@ export class ProductEntity extends DefaultEntity {
   @Column()
   price: number;
   @Column()
-  descirption: string;
-  // @Column()
-  // category_id   // FK  (n:1)
+  desc: string;
 }

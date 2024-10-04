@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,6 +11,8 @@ import { UserModule } from './user/user.module';
 import { CustomerEntity } from './Entity/customer.entity';
 import { SellerEntity } from './Entity/seller.entity';
 import { SellerModule } from './seller/seller.module';
+import { ProductEntity } from './Entity/product.entity';
+import { APP_PIPE } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { SellerModule } from './seller/seller.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [UserEntity, CustomerEntity, SellerEntity],
+        entities: [UserEntity, CustomerEntity, SellerEntity, ProductEntity],
         synchronize: true,
       }),
     }),
@@ -38,7 +40,13 @@ import { SellerModule } from './seller/seller.module';
     SellerModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
+  ],
   exports: [TypeOrmModule, JwtModule],
 })
 export class AppModule {}
