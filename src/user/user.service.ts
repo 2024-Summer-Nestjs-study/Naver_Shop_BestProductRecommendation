@@ -8,7 +8,7 @@ import { SellerEntity } from '../Entity/seller.entity';
 import { UserLoginDto } from './dto/user.login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { LoginResDto } from '../customer/dto/res/customer.res.dto';
+import { UserLoginResDto } from './dto/user.login.res.dto';
 
 @Injectable()
 export class UserService {
@@ -36,14 +36,14 @@ export class UserService {
         customer.name = data.name;
         customer.userid = data.id;
         await this.customerEntity.save(customer);
-        return customer;
+        return data;
       }
       const seller: SellerEntity = new SellerEntity();
       if (data.rela === '판매자') {
         seller.name = data.name;
         seller.userid = data.id;
         await this.sellerEntity.save(seller);
-        return seller;
+        return data;
       }
     } catch (error) {
       if (error.code === 'ER_DUP_ENTRY') {
@@ -52,7 +52,7 @@ export class UserService {
     }
   }
   async login(body: UserLoginDto) {
-    const res = new LoginResDto();
+    const res = new UserLoginResDto();
     const IDdata: UserEntity = await this.userEntity.findOne({
       where: {
         userID: body.userID,
