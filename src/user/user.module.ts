@@ -10,7 +10,12 @@ import { SellerEntity } from '../Entity/seller.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserEntity, CustomerEntity, SellerEntity]),
+    TypeOrmModule.forFeature([
+      UserEntity,
+      CustomerEntity,
+      SellerEntity,
+      CustomerEntity,
+    ]),
     JwtModule.register({}),
   ],
   controllers: [UserController],
