@@ -8,5 +8,5 @@ export class ProductsCreateDto {
   @IsNumber()
   price: number;
   @IsString()
-  description: string;
+  desc: string;
 }
