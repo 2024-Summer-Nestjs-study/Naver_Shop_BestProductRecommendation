@@ -10,7 +10,6 @@ import { ProductsModule } from './products/products.module';
 import { UserModule } from './user/user.module';
 import { CustomerEntity } from './Entity/customer.entity';
 import { SellerEntity } from './Entity/seller.entity';
-import { SellerModule } from './seller/seller.module';
 import { ProductEntity } from './Entity/product.entity';
 import { APP_PIPE } from '@nestjs/core';
 
@@ -37,7 +36,6 @@ import { APP_PIPE } from '@nestjs/core';
     CustomerModule,
     ProductsModule,
     UserModule,
-    SellerModule,
   ],
   controllers: [AppController],
   providers: [
