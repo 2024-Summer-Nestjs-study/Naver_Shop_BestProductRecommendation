@@ -13,6 +13,6 @@ import { SellerEntity } from '../Entity/seller.entity';
   ],
   controllers: [ProductsController],
   providers: [ProductsService],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule, JwtModule],
 })
 export class ProductsModule {}

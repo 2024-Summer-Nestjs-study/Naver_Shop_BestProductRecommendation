@@ -19,6 +19,7 @@ export class ProductsService {
     products.stock = body.stock; //buy 하면 1씩 감소하기.
     products.price = body.price;
     products.desc = body.desc;
+    products.volume = 0;
     products.seller = seller;
     const sameData: ProductEntity = await this.productEntity.findOne({
       relations: {

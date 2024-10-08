@@ -15,4 +15,6 @@ export class ProductEntity extends DefaultEntity {
   price: number;
   @Column()
   desc: string;
+  @Column()
+  volume: number;
 }
