@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ProductEntity } from '../Entity/product.entity';
 import { OrderEntity } from '../Entity/order.entity';
 import { CustomerEntity } from '../Entity/customer.entity';
+import { CustomerSearchDto } from './dto/customer.search.dto';
 
 @Injectable()
 export class CustomerService {
@@ -44,5 +45,15 @@ export class CustomerService {
     save.customer = customer;
     await this.orderEntity.save(save);
     return save;
+  }
+  async search(body: CustomerSearchDto) {
+    const product: ProductEntity = await this.productEntity.findOne({
+      where: {
+        id: body.product_id,
+      },
+    });
+    product.search += 1;
+    await this.productEntity.save(product);
+    return product;
   }
 }
