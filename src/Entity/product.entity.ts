@@ -17,4 +17,6 @@ export class ProductEntity extends DefaultEntity {
   desc: string;
   @Column()
   volume: number;
+  @Column()
+  search: number;
 }
