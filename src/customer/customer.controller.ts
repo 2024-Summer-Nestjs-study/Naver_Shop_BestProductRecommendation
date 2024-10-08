@@ -1,18 +1,14 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Request } from '@nestjs/common';
 import { CustomerService } from './customer.service';
-import { CustomerRegistDto } from './dto/req/customer.regist.dto';
-import { CustomerLoginDto } from './dto/req/customer.login.dto';
+import { CustomerBuyDto } from './dto/customer.buy.dto';
+import { AccessGuard } from '../jwt/access.guard';
 
 @Controller('customer')
+@UseGuards(AccessGuard)
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
-
-  @Post('regist')
-  async regist(@Body() body: CustomerRegistDto) {
-    return this.customerService.regist(body);
-  }
-  @Post('login')
-  async login(@Body() body: CustomerLoginDto) {
-    return this.customerService.login(body);
+  @Post('buy')
+  async buy(@Body() body: CustomerBuyDto, @Request() req: Request) {
+    return this.customerService.buy(body, req);
   }
 }
