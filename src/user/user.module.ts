@@ -7,6 +7,8 @@ import { UserController } from './user.controller';
 import { CustomerEntity } from '../Entity/customer.entity';
 import { CustomerService } from '../customer/customer.service';
 import { SellerEntity } from '../Entity/seller.entity';
+import { OrderEntity } from '../Entity/order.entity';
+import { ProductEntity } from '../Entity/product.entity';
 
 @Module({
   imports: [
@@ -15,11 +17,13 @@ import { SellerEntity } from '../Entity/seller.entity';
       CustomerEntity,
       SellerEntity,
       CustomerEntity,
+      OrderEntity,
+      ProductEntity,
     ]),
     JwtModule.register({}),
   ],
   controllers: [UserController],
   providers: [UserService, CustomerService],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule, JwtModule],
 })
 export class UserModule {}

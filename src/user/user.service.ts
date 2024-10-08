@@ -31,17 +31,17 @@ export class UserService {
     data.rela = body.rela;
     try {
       await this.userEntity.save(data);
-      const customer: CustomerEntity = new CustomerEntity();
       if (data.rela === '소비자') {
+        const customer: CustomerEntity = new CustomerEntity();
         customer.name = data.name;
-        customer.userid = data.id;
+        customer.userid = data;
         await this.customerEntity.save(customer);
         return data;
       }
       const seller: SellerEntity = new SellerEntity();
       if (data.rela === '판매자') {
         seller.name = data.name;
-        seller.userid = data.id;
+        seller.userid = data;
         await this.sellerEntity.save(seller);
         return data;
       }
