@@ -12,6 +12,7 @@ import { CustomerEntity } from './Entity/customer.entity';
 import { SellerEntity } from './Entity/seller.entity';
 import { ProductEntity } from './Entity/product.entity';
 import { APP_PIPE } from '@nestjs/core';
+import { OrderEntity } from './Entity/order.entity';
 
 @Module({
   imports: [
@@ -28,7 +29,13 @@ import { APP_PIPE } from '@nestjs/core';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [UserEntity, CustomerEntity, SellerEntity, ProductEntity],
+        entities: [
+          UserEntity,
+          CustomerEntity,
+          SellerEntity,
+          ProductEntity,
+          OrderEntity,
+        ],
         synchronize: true,
       }),
     }),
