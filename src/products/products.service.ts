@@ -20,6 +20,7 @@ export class ProductsService {
     products.price = body.price;
     products.desc = body.desc;
     products.volume = 0;
+    products.search = 0;
     products.seller = seller;
     const sameData: ProductEntity = await this.productEntity.findOne({
       relations: {
